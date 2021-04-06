@@ -6,10 +6,6 @@ import { Products } from "./Products";
 export const ProductListing = () => {
   const { sortBy, showAllInventory, showFastDelivery } = useProducts();
 
-  // useEffect(() => {
-  //   console.log(items);
-  // }, []);
-
   const getSortedData = (items, sortBy) => {
     if (sortBy && sortBy === "LOW_TO_HIGH") {
       return items.sort((a, b) => a.price - b.price);
@@ -31,7 +27,6 @@ export const ProductListing = () => {
   return (
     <section className="container">
       <Filters />
-      {/* <Products value={filteredData} /> */}
       <div className="content" style={{ display: "flex", flexWrap: "wrap" }}>
         {filteredData.map((product) => (
           <div key={product.id}>
