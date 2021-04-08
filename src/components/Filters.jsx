@@ -1,12 +1,7 @@
-import { useProducts } from "../Contexts/products-context";
+import { useData } from "../Contexts/data-context";
 
 export const Filters = () => {
-  const {
-    dispatch,
-    sortBy,
-    showAllInventory,
-    showFastDelivery,
-  } = useProducts();
+  const { dispatch, sortBy, showAllInventory, showFastDelivery } = useData();
   return (
     <nav className="sidebar">
       <div className="sidebar-content">
@@ -22,7 +17,7 @@ export const Filters = () => {
                     dispatch({ type: "SORT", payload: "LOW_TO_HIGH" })
                   }
                   checked={sortBy && sortBy === "LOW_TO_HIGH"}
-                  style={{color: "#5A4041"}}
+                  style={{ color: "#5A4041" }}
                 />{" "}
                 Show Low To High
               </li>

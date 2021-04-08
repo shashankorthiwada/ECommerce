@@ -1,11 +1,17 @@
 import { useCart } from "../Contexts/cart-context";
 import { useTheme } from "../Contexts/theme-context";
+import { useData } from "../Contexts/data-context";
 
 export const Products = ({ product }) => {
-  const { saveItemsToCart } = useCart();
+  // const { saveItemsToCart } = useCart();
   const { theme } = useTheme();
+  const { dispatch, itemsInCart } = useData();
 
   const { name, image, price } = product;
+
+  const AddItemsToCartHandler = (product) => {
+    console.log(product);
+  };
 
   return (
     <div
@@ -23,9 +29,9 @@ export const Products = ({ product }) => {
         <p style={{ padding: "0.3rem" }}>Rs. {price}</p>
 
         <button
-          onClick={() => {
-            saveItemsToCart(product);
-          }}
+          // onClick={() => AddItemsToCartHandler(product)}
+
+          onClick={() => dispatch({ type: "ADD_TO_CART", payload: product })}
           style={{
             width: "7rem",
             marginLeft: "3rem",
@@ -35,6 +41,7 @@ export const Products = ({ product }) => {
             backgroundColor: "#5A4041",
             border: "1px solid #fff",
             height: "2rem",
+            cursor: "pointer",
           }}
         >
           Add To Cart

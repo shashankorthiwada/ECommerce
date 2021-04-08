@@ -3,6 +3,39 @@
 
 .darkmode-btn {
   /* position: absolute; */
-  
   margin-top: 0.4rem;
+}
+
+.category-container:hover .category-image {
+  opacity: 0.3;
+}
+
+.category-container:hover .category-text-container {
+  opacity: 1;
+}
+
+.category-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.category-text-container {
+  transition: ".5s ease";
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+}
+
+.category-image {
+  opacity: 1;
+  transition: ".5s ease";
+  backface-visibility: hidden;
+  width: 15rem;
+  height: 15rem;
+  display: block;
+  margin: 1rem;
+  border-radius: 0.25rem;
 }

@@ -1,10 +1,10 @@
 import { items } from "../components/products-reducer.js";
 import { Filters } from "./Filters";
-import { useProducts } from "../Contexts/products-context";
+import { useData } from "../Contexts/data-context";
 import { Products } from "./Products";
 
 export const ProductListing = () => {
-  const { sortBy, showAllInventory, showFastDelivery } = useProducts();
+  const { sortBy, showAllInventory, showFastDelivery } = useData();
 
   const getSortedData = (items, sortBy) => {
     if (sortBy && sortBy === "LOW_TO_HIGH") {

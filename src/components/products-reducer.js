@@ -1,6 +1,5 @@
 import faker from "faker";
 
-
 faker.seed(123);
 
 export const items = [...Array(50)].map((item) => ({
@@ -19,6 +18,7 @@ export const items = [...Array(50)].map((item) => ({
     "Buy 2 Get 3",
   ]),
   color: faker.commerce.color(),
+  quantity: 0,
 }));
 
 export const productReducer = (state, action) => {
@@ -38,9 +38,46 @@ export const productReducer = (state, action) => {
         ...state,
         showFastDelivery: !state.showFastDelivery,
       });
+    case "ADD_TO_CART":
+      if (
+        state.itemsInCart.find((cartItem) => cartItem.id === action.payload.id)
+      ) {
+        return {
+          ...state,
+          itemsInCart: state.itemsInCart.map((cartItem) =>
+            cartItem.id === action.payload.id
+              ? { ...cartItem, quantity: cartItem.quantity + 1 }
+              : cartItem
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          itemsInCart: state.itemsInCart.concat({
+            ...action.payload,
+            quantity: 1,
+          }),
+        };
+      }
+
+    case "DECREASE_QTY":
+      return {
+        ...state,
+        itemsInCart: state.itemsInCart.map((cartItem) =>
+          cartItem.id === action.payload.id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        ),
+      };
+
+    case "REMOVE_FROM_CART":
+      return {
+        ...state,
+        itemsInCart: state.itemsInCart.filter(
+          (cartItem) => cartItem.id !== action.payload.id
+        ),
+      };
     default:
       return { state };
   }
 };
-
-

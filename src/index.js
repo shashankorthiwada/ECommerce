@@ -5,17 +5,17 @@ import App from "./App";
 import { CartProvider } from "./Contexts/cart-context";
 import { ThemeProvider } from "./Contexts/theme-context";
 import { RouteProvider } from "./Contexts/route-context";
-import { ProductProvider } from "./Contexts/products-context";
+import { DataProvider } from "./Contexts/data-context";
 
 ReactDOM.render(
   <React.StrictMode>
     <RouteProvider>
       <ThemeProvider>
-        <ProductProvider>
+        <DataProvider>
           <CartProvider>
             <App />
           </CartProvider>
-        </ProductProvider>
+        </DataProvider>
       </ThemeProvider>
     </RouteProvider>
   </React.StrictMode>,

@@ -7,7 +7,23 @@ export function CartProvider({ children }) {
 
   const saveItemsToCart = (item) => {
     console.log("Saving to Server...");
-    setCart((items) => [...items, item]);
+    // let cartItem = itemsInCart.find((cartItem) => cartItem.id === item.id);
+    // if (cartItem) {
+    //   setCart((items) => [...items, { cartItem, quantity: cartItem.quantity + 1 }]);
+    // } else {
+    //   setCart((items) => [...items, item]);
+    //   // setCart((items) => [itemsInCart]);
+    // }
+
+    setCart((items) =>
+      items.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity + 1 }
+          : item
+      )
+    );
+
+    console.log(itemsInCart);
   };
 
   return (
