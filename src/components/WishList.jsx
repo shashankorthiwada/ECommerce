@@ -1,37 +1,27 @@
-import { useCart } from "../Contexts/cart-context";
-import { useTheme } from "../Contexts/theme-context";
 import { useData } from "../Contexts/data-context";
+import { useTheme } from "../Contexts/theme-context";
 
-export const Cart = () => {
+export const WishList = () => {
   const {
-    state: { itemsInCart },
+    state: { itemsInWishList },
     dispatch,
   } = useData();
   const { theme } = useTheme();
-
-  const cartTotal = itemsInCart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
-
   return (
-    <div>
-      {itemsInCart.length > 0 ? (
-        itemsInCart.map((item) => (
+    <>
+      {itemsInWishList.length > 0 ? (
+        itemsInWishList.map((item) => (
           <div style={{ margin: "1rem auto auto 3rem" }}>
-            <h1>Order Total: {cartTotal}</h1>
             <div
               className="product-card-div m-1rem"
               style={{
                 border: `1px solid ${theme.color}`,
-                height: "30rem",
+                height: "28rem",
               }}
             >
               <div
                 className="product-image-div"
-                style={{
-                  position: "relative",
-                }}
+                style={{ position: "relative" }}
               >
                 <img
                   className="item-image"
@@ -41,7 +31,7 @@ export const Cart = () => {
                 <button
                   style={{ display: "inline-block" }}
                   onClick={() =>
-                    dispatch({ type: "REMOVE_FROM_CART", payload: item })
+                    dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item })
                   }
                   style={{
                     position: "absolute",
@@ -71,39 +61,22 @@ export const Cart = () => {
                 }}
               >
                 <button
+                  style={{ display: "inline-block" }}
                   onClick={() =>
                     dispatch({ type: "ADD_TO_CART", payload: item })
                   }
-                >
-                  +
-                </button>
-                <p>{item.quantity}</p>
-                <button
-                  onClick={() =>
-                    dispatch({ type: "DECREASE_QTY", payload: item })
-                  }
-                >
-                  -
-                </button>
-
-                <button
-                  style={{ display: "inline-block" }}
-                  onClick={() =>
-                    dispatch({ type: "ADD_TO_WISH_LIST", payload: item })
-                  }
                   style={{
                     width: "10rem",
-                    marginLeft: "2rem",
+                    marginLeft: "1rem",
                     color: "#fff",
                     borderRadius: "0.25rem",
                     backgroundColor: "#5A4041",
                     border: "1px solid #fff",
                     height: "2rem",
                     cursor: "pointer",
-                    margin:"1rem"
                   }}
                 >
-                  Move To WishList
+                  Move To Cart
                 </button>
               </div>
             </div>
@@ -111,9 +84,9 @@ export const Cart = () => {
         ))
       ) : (
         <div style={{ margin: "1rem auto auto 3rem" }}>
-          <p>Cart is Empty</p>
+          <p>WishList is Empty</p>
         </div>
       )}
-    </div>
+    </>
   );
 };

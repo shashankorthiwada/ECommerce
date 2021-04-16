@@ -9,20 +9,17 @@ export const Products = ({ product }) => {
 
   const { name, image, price } = product;
 
-  const AddItemsToCartHandler = (product) => {
-    console.log(product);
-  };
-
   return (
     <div
       className="product-card-div m-1rem"
       style={{
         border: `1px solid ${theme.color}`,
-        height: "29rem",
+        height: "30rem",
+        width:"17rem"
       }}
     >
       <div className="product-image-div">
-        <img className="item-image" style={{ width: "15.1rem" }} src={image} />
+        <img className="item-image" style={{ width: "16.9rem" }} src={image} />
       </div>
       <div style={{ margin: "1rem" }}>
         <h4>{name}</h4>
@@ -33,9 +30,9 @@ export const Products = ({ product }) => {
 
           onClick={() => dispatch({ type: "ADD_TO_CART", payload: product })}
           style={{
-            width: "7rem",
+            width: "9rem",
             marginLeft: "3rem",
-            marginTop: "1rem",
+            marginTop:"1rem",
             color: "#fff",
             borderRadius: "0.25rem",
             backgroundColor: "#5A4041",
@@ -45,6 +42,27 @@ export const Products = ({ product }) => {
           }}
         >
           Add To Cart
+        </button>
+
+        <button
+          // onClick={() => AddItemsToCartHandler(product)}
+
+          onClick={() =>
+            dispatch({ type: "ADD_TO_WISH_LIST", payload: product })
+          }
+          style={{
+            width: "9rem",
+            marginLeft: "3rem",
+            
+            color: "#fff",
+            borderRadius: "0.25rem",
+            backgroundColor: "#5A4041",
+            border: "1px solid #fff",
+            height: "2rem",
+            cursor: "pointer",
+          }}
+        >
+          Add To Wish List
         </button>
       </div>
     </div>

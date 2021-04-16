@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import { productReducer } from "../components/products-reducer";
+import kalakandImage from "../images/kalakand.jpg";
 
 const DataContext = createContext();
 
@@ -8,7 +9,15 @@ export function DataProvider({ children }) {
     sortBy: null,
     showAllInventory: false,
     showFastDelivery: false,
-    itemsInCart: [],
+    itemsInCart: [
+      // {
+      //   id: 1,
+      //   name: "Ajmeri Kalakand",
+      //   price: 2000,
+      //   image: kalakandImage,
+      //   quantity: 1
+      // }
+    ],
     itemsInWishList: [],
   });
 

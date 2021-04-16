@@ -9,6 +9,7 @@ import { useTheme } from "./Contexts/theme-context";
 import { Navigation } from "./components/Navigation.jsx";
 import { Categories } from "./components/Categories.jsx";
 import { useRoute } from "./Contexts/route-context";
+import { WishList } from "./components/WishList.jsx";
 
 function App() {
   // const [route, setRoute] = useState("products");
@@ -54,6 +55,7 @@ function App() {
       {route === "categories" && <Categories />}
       {route === "products" && <ProductListing />}
       {route === "cart" && <Cart />}
+      {route === "wishlist" && <WishList />}
       {/* {route === "cart" && <WishList />} */}
     </div>
   );

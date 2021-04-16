@@ -1,7 +1,10 @@
 import { useData } from "../Contexts/data-context";
 
 export const Filters = () => {
-  const { dispatch, sortBy, showAllInventory, showFastDelivery } = useData();
+  const {
+    state: { sortBy, showAllInventory, showFastDelivery },
+    dispatch,
+  } = useData();
   return (
     <nav className="sidebar">
       <div className="sidebar-content">

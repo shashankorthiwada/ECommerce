@@ -4,7 +4,7 @@ import { useState } from "react";
 export const RouteContext = createContext();
 
 export function RouteProvider({ children }) {
-  const [route, setRoute] = useState("categories");
+  const [route, setRoute] = useState("products");
   return (
     <RouteContext.Provider value={{ route, setRoute }}>
       {children}

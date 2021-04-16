@@ -4,7 +4,9 @@ import { useData } from "../Contexts/data-context";
 import { Products } from "./Products";
 
 export const ProductListing = () => {
-  const { sortBy, showAllInventory, showFastDelivery } = useData();
+  const {
+    state: { sortBy, showAllInventory, showFastDelivery },
+  } = useData();
 
   const getSortedData = (items, sortBy) => {
     if (sortBy && sortBy === "LOW_TO_HIGH") {

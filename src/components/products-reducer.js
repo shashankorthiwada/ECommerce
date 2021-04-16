@@ -77,6 +77,18 @@ export const productReducer = (state, action) => {
           (cartItem) => cartItem.id !== action.payload.id
         ),
       };
+    case "ADD_TO_WISH_LIST":
+      return {
+        ...state,
+        itemsInWishList: state.itemsInWishList.concat(action.payload),
+      };
+    case "REMOVE_FROM_WISHLIST":
+      return {
+        ...state,
+        itemsInWishList: state.itemsInWishList.filter(
+          (item) => item.id !== action.payload.id
+        ),
+      };
     default:
       return { state };
   }
