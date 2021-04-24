@@ -19,6 +19,7 @@ export const items = [...Array(50)].map((item) => ({
   ]),
   color: faker.commerce.color(),
   quantity: 0,
+  description: faker.commerce.productDescription(),
 }));
 
 export const productReducer = (state, action) => {
@@ -44,6 +45,8 @@ export const productReducer = (state, action) => {
       ) {
         return {
           ...state,
+          visibleCartItems: "visible",
+          toastMessage: `${action.payload.name} Added To Cart Succesfully`,
           itemsInCart: state.itemsInCart.map((cartItem) =>
             cartItem.id === action.payload.id
               ? { ...cartItem, quantity: cartItem.quantity + 1 }
@@ -53,6 +56,8 @@ export const productReducer = (state, action) => {
       } else {
         return {
           ...state,
+          visibleCartItems: "visible",
+          toastMessage: `${action.payload.name} Added To Cart Succesfully`,
           itemsInCart: state.itemsInCart.concat({
             ...action.payload,
             quantity: 1,
@@ -88,6 +93,11 @@ export const productReducer = (state, action) => {
         itemsInWishList: state.itemsInWishList.filter(
           (item) => item.id !== action.payload.id
         ),
+      };
+    case "CLOSE_TOAST":
+      return {
+        ...state,
+        toastMessage: action.payload,
       };
     default:
       return { state };

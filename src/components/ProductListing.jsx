@@ -2,10 +2,11 @@ import { items } from "../components/products-reducer.js";
 import { Filters } from "./Filters";
 import { useData } from "../Contexts/data-context";
 import { Products } from "./Products";
+import { Toast } from "./Toast";
 
 export const ProductListing = () => {
   const {
-    state: { sortBy, showAllInventory, showFastDelivery },
+    state: { sortBy, showAllInventory, showFastDelivery, toastMessage },
   } = useData();
 
   const getSortedData = (items, sortBy) => {
@@ -30,6 +31,7 @@ export const ProductListing = () => {
     <section className="container">
       <Filters />
       <div className="content" style={{ display: "flex", flexWrap: "wrap" }}>
+        {toastMessage && <Toast />}
         {filteredData.map((product) => (
           <div key={product.id}>
             <Products product={product} />

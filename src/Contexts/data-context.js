@@ -19,6 +19,8 @@ export function DataProvider({ children }) {
       // }
     ],
     itemsInWishList: [],
+    visibleCartItems: "hidden",
+    toastMessage: "",
   });
 
   return (

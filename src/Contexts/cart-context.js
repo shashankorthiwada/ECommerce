@@ -6,14 +6,7 @@ export function CartProvider({ children }) {
   const [itemsInCart, setCart] = useState([]);
 
   const saveItemsToCart = (item) => {
-    console.log("Saving to Server...");
-    // let cartItem = itemsInCart.find((cartItem) => cartItem.id === item.id);
-    // if (cartItem) {
-    //   setCart((items) => [...items, { cartItem, quantity: cartItem.quantity + 1 }]);
-    // } else {
-    //   setCart((items) => [...items, item]);
-    //   // setCart((items) => [itemsInCart]);
-    // }
+   // console.log("Saving to Server...");
 
     setCart((items) =>
       items.map((cartItem) =>

@@ -1,6 +1,5 @@
-import { useCart } from "../Contexts/cart-context";
-import { useTheme } from "../Contexts/theme-context";
 import { useData } from "../Contexts/data-context";
+import { useTheme } from "../Contexts/theme-context";
 
 export const Cart = () => {
   const {
@@ -16,15 +15,22 @@ export const Cart = () => {
 
   return (
     <div>
-      {itemsInCart.length > 0 ? (
-        itemsInCart.map((item) => (
-          <div style={{ margin: "1rem auto auto 3rem" }}>
-            <h1>Order Total: {cartTotal}</h1>
+      <div
+        style={{
+          margin: "1rem auto auto 3rem",
+        }}
+      >
+        <h1>Order Total: {cartTotal}</h1>
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap" }}>
+        {itemsInCart.length > 0 ? (
+          itemsInCart.map((item) => (
             <div
               className="product-card-div m-1rem"
               style={{
                 border: `1px solid ${theme.color}`,
                 height: "30rem",
+                width: "17rem",
               }}
             >
               <div
@@ -35,7 +41,7 @@ export const Cart = () => {
               >
                 <img
                   className="item-image"
-                  style={{ width: "15.1rem" }}
+                  style={{ width: "16.9rem" }}
                   src={item.image}
                 />
                 <button
@@ -100,20 +106,20 @@ export const Cart = () => {
                     border: "1px solid #fff",
                     height: "2rem",
                     cursor: "pointer",
-                    margin:"1rem"
+                    margin: "1rem",
                   }}
                 >
                   Move To WishList
                 </button>
               </div>
             </div>
+          ))
+        ) : (
+          <div style={{ margin: "1rem auto auto 3rem" }}>
+            <p>Cart is Empty</p>
           </div>
-        ))
-      ) : (
-        <div style={{ margin: "1rem auto auto 3rem" }}>
-          <p>Cart is Empty</p>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };

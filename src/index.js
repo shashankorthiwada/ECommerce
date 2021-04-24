@@ -4,12 +4,18 @@ import "./index.css";
 import App from "./App";
 import { CartProvider } from "./Contexts/cart-context";
 import { ThemeProvider } from "./Contexts/theme-context";
-import { RouteProvider } from "./Contexts/route-context";
 import { DataProvider } from "./Contexts/data-context";
+import { BrowserRouter as Router } from "react-router-dom";
+export { Home } from "./components/Home";
+export { WishList } from "./components/WishList";
+export { Navigation } from "./components/Navigation";
+export { ProductListing } from "./components/ProductListing";
+export { Cart } from "./components/Cart";
+export { ProductDetails } from "./components/ProductDetails";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RouteProvider>
+    <Router>
       <ThemeProvider>
         <DataProvider>
           <CartProvider>
@@ -17,7 +23,7 @@ ReactDOM.render(
           </CartProvider>
         </DataProvider>
       </ThemeProvider>
-    </RouteProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
