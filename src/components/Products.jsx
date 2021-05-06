@@ -6,7 +6,7 @@ export const Products = ({ product }) => {
   const { theme } = useTheme();
   const { dispatch } = useData();
 
-  const { name, image, id, price } = product;
+  const { name, image, _id, price } = product;
 
   return (
     <div
@@ -60,7 +60,7 @@ export const Products = ({ product }) => {
           Add To Wish List
         </button>
         <Link
-          to={`/product/${id}`}
+          to={`/product/${_id}`}
           style={{ color: "#5A4041", padding: "3rem" }}
         >
           Details

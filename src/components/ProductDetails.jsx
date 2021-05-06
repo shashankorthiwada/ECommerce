@@ -1,22 +1,29 @@
 import { useParams } from "react-router";
-import { items } from "../reducers/products-reducer.js";
 import { useTheme } from "../Contexts/theme-context";
 import { useData } from "../Contexts/data-context";
 import { Toast } from "./Toast";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
+  const [productDetails, setProductDetails] = useState({});
+  console.log(productId);
   const { theme } = useTheme();
   const {
-    state: { toastMessage },
+    state: { toastMessage, products },
     dispatch,
   } = useData();
 
-  const getProductDetails = (products, productId) => {
-    return products.find((product) => product.id === productId);
-  };
+  useEffect(async () => {
+    const {
+      data: { product },
+    } = await axios.get(`https://halwaai-ecommerce-backend.herokuapp.com/products/${productId}`);
 
-  const product = getProductDetails(items, productId);
+    setProductDetails(product);
+  }, []);
+
+  const product = productDetails;
 
   const { name, image, price, description } = product;
 
@@ -27,7 +34,7 @@ export const ProductDetails = () => {
         className="product-card-div m-1rem"
         style={{
           border: `1px solid ${theme.color}`,
-          height: "25rem",
+          height: "30rem",
           width: "30rem",
           cursor: "pointer",
           marginLeft: "2.5rem",
@@ -36,7 +43,7 @@ export const ProductDetails = () => {
         <div className="product-image-div">
           <img
             className="item-image"
-            style={{ width: "29.9rem", height: "10rem" }}
+            style={{ width: "29.9rem", height: "18rem" }}
             src={image}
           />
         </div>

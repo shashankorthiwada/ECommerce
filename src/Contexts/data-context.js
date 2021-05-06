@@ -12,7 +12,9 @@ export function DataProvider({ children }) {
     itemsInCart: [],
     itemsInWishList: [],
     visibleCartItems: "hidden",
+    visibleWishListItems: "hidden",
     toastMessage: "",
+    products: [],
   });
 
   return (

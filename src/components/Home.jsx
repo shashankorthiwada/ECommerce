@@ -34,60 +34,6 @@ export const Home = () => {
           </button>
         </NavLink>
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap", marginLeft: "6rem" }}>
-        <div className="category-container">
-          {" "}
-          <img
-            src={mainImage}
-            className="category-image"
-            style={{
-              border: `1px solid ${theme.color}`,
-            }}
-          />
-          <div className="category-text-container">
-            <div>Category 1</div>
-          </div>
-        </div>
-        <div className="category-container">
-          {" "}
-          <img
-            src={mainImage}
-            className="category-image"
-            style={{
-              border: `1px solid ${theme.color}`,
-            }}
-          />
-          <div className="category-text-container">
-            <div>Category 2</div>
-          </div>
-        </div>
-        <div className="category-container">
-          {" "}
-          <img
-            src={mainImage}
-            className="category-image"
-            style={{
-              border: `1px solid ${theme.color}`,
-            }}
-          />
-          <div className="category-text-container">
-            <div>Category 3</div>
-          </div>
-        </div>
-        <div className="category-container">
-          {" "}
-          <img
-            src={mainImage}
-            className="category-image"
-            style={{
-              border: `1px solid ${theme.color}`,
-            }}
-          />
-          <div className="category-text-container">
-            <div>Category 4</div>
-          </div>
-        </div>
-      </div>
     </>
   );
 };

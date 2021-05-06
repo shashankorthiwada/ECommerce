@@ -24,7 +24,7 @@ export function AuthProvider({ children }) {
 
   const loginUser = async (username, password) => {
     try {
-      const { data } = await axios.post("http://localhost:3001/users/login", {
+      const { data } = await axios.post("https://halwaai-ecommerce-backend.herokuapp.com/users/login", {
         username: username.toLowerCase(),
         password: password,
       });
@@ -51,7 +51,7 @@ export function AuthProvider({ children }) {
 
   const signUpNewUser = async (username, password, email, phonenumber) => {
     try {
-      const { data } = await axios.post("http://localhost:3001/users/signup", {
+      const { data } = await axios.post("https://halwaai-ecommerce-backend.herokuapp.com/users/signup", {
         username: username.toLowerCase(),
         password,
         email: email.toLowerCase(),

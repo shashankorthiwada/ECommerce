@@ -59,7 +59,7 @@ export const Login = () => {
           <input
             className="input"
             style={{ marginLeft: "1rem", marginBottom: "1rem" }}
-            type="text"
+            type="password"
             value={password}
             onChange={(e) =>
               userDetailsDispatch({
@@ -104,7 +104,16 @@ export const Login = () => {
         </button>
       </div>
       {loader && (
-        <Loader type="Oval" color="#00BFFF" height={80} width={80} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "5rem",
+          }}
+        >
+          <Loader type="Oval" color="#5A4041" height={80} width={80} />
+        </div>
       )}
     </div>
   );

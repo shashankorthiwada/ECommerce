@@ -32,12 +32,12 @@ export const productReducer = (state, action) => {
     case "TOGGLE_INV":
       return (state = {
         ...state,
-        showAllInventory: !state.showAllInventory,
+        inStock: !state.inStock,
       });
     case "TOGGLE_FAST_DELIVERY":
       return (state = {
         ...state,
-        showFastDelivery: !state.showFastDelivery,
+        fastDelivery: !state.fastDelivery,
       });
     case "ADD_TO_CART":
       if (
@@ -85,6 +85,7 @@ export const productReducer = (state, action) => {
     case "ADD_TO_WISH_LIST":
       return {
         ...state,
+        visibleWishListItems: "visible",
         itemsInWishList: state.itemsInWishList.concat(action.payload),
       };
     case "REMOVE_FROM_WISHLIST":
@@ -99,6 +100,8 @@ export const productReducer = (state, action) => {
         ...state,
         toastMessage: action.payload,
       };
+    case "SHOW_PRODUCTS":
+      return { ...state, products: action.payload };
     default:
       return { state };
   }

@@ -2,7 +2,7 @@ import { useData } from "../Contexts/data-context";
 
 export const Filters = () => {
   const {
-    state: { sortBy, showAllInventory, showFastDelivery },
+    state: { sortBy, inStock, fastDelivery },
     dispatch,
   } = useData();
   return (
@@ -43,7 +43,7 @@ export const Filters = () => {
                 <input
                   type="checkbox"
                   name="sort"
-                  checked={showAllInventory}
+                  checked={inStock}
                   onChange={() => dispatch({ type: "TOGGLE_INV" })}
                 />{" "}
                 Include Out Of Stock
@@ -52,7 +52,7 @@ export const Filters = () => {
                 <input
                   type="checkbox"
                   name="sort"
-                  checked={showFastDelivery}
+                  checked={fastDelivery}
                   onChange={() => dispatch({ type: "TOGGLE_FAST_DELIVERY" })}
                 />{" "}
                 Show Only Fast Delivery

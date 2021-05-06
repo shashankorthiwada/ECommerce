@@ -96,7 +96,7 @@ export const SignUp = () => {
               <input
                 className="input"
                 style={{ marginLeft: "1rem" }}
-                type="text"
+                type="password"
                 value={password}
                 onChange={(e) =>
                   userDetailsDispatch({
@@ -142,7 +142,18 @@ export const SignUp = () => {
           </b>
         </>
       )}
-      {loader && <Loader type="Oval" color="#00BFFF" height={80} width={80} />}
+      {loader && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginTop: "5rem",
+          }}
+        >
+          <Loader type="Oval" color="#5A4041" height={80} width={80} />
+        </div>
+      )}
       {showMsg && (
         <div className="card-description">
           <p>
