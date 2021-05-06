@@ -5,7 +5,7 @@ export const Cart = () => {
     state: { itemsInCart },
     dispatch,
   } = useData();
-  
+
   const cartTotal = itemsInCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -41,6 +41,7 @@ export const Cart = () => {
                   className="item-image"
                   style={{ width: "16.9rem" }}
                   src={item.image}
+                  alt="item"
                 />
                 <button
                   style={{ display: "inline-block" }}

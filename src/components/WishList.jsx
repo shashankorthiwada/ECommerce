@@ -25,6 +25,7 @@ export const WishList = () => {
                   className="item-image"
                   style={{ width: "15.1rem" }}
                   src={item.image}
+                  alt="item"
                 />
                 <button
                   style={{ display: "inline-block" }}

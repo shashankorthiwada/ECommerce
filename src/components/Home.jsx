@@ -9,6 +9,7 @@ export const Home = () => {
         <NavLink to="/products">
           <img
             src={mainImage}
+            alt="item"
             style={{
               width: "30rem",
               height: "30rem",

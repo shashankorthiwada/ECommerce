@@ -1,4 +1,3 @@
-import { items } from "../reducers/products-reducer.js";
 import { Filters } from "./Filters";
 import { useData } from "../Contexts/data-context";
 import { Products } from "./Products";
@@ -40,7 +39,9 @@ export const ProductListing = () => {
       showLoader(true);
       const {
         data: { products },
-      } = await axios.get("https://halwaai-ecommerce-backend.herokuapp.com/products");
+      } = await axios.get(
+        "https://halwaai-ecommerce-backend.herokuapp.com/products"
+      );
       dispatch({ type: "SHOW_PRODUCTS", payload: products });
       showLoader(false);
     } catch (error) {

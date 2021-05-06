@@ -1,6 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
 import { productReducer } from "../reducers/products-reducer";
-import kalakandImage from "../images/kalakand.jpg";
 
 const DataContext = createContext();
 

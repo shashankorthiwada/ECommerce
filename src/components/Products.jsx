@@ -17,7 +17,12 @@ export const Products = ({ product }) => {
       }}
     >
       <div className="product-image-div">
-        <img className="item-image" style={{ width: "16.9rem" }} src={image} />
+        <img
+          className="item-image"
+          style={{ width: "16.9rem" }}
+          src={image}
+          alt="item"
+        />
       </div>
 
       <div style={{ margin: "1rem" }}>

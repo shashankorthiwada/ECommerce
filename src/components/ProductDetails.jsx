@@ -10,7 +10,7 @@ export const ProductDetails = () => {
   console.log(productId);
 
   const {
-    state: { toastMessage, products },
+    state: { toastMessage },
     dispatch,
   } = useData();
 
@@ -46,6 +46,7 @@ export const ProductDetails = () => {
             className="item-image"
             style={{ width: "29.9rem", height: "18rem" }}
             src={image}
+            alt="item"
           />
         </div>
         <div className="product-description-div">

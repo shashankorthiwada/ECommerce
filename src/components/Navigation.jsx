@@ -6,7 +6,6 @@ export const Navigation = () => {
     state: {
       itemsInCart,
       visibleCartItems,
-      toastMessage,
       itemsInWishList,
       visibleWishListItems,
     },
