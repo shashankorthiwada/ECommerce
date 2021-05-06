@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { items } from "../components/products-reducer.js";
+import { items } from "../reducers/products-reducer.js";
 import { useTheme } from "../Contexts/theme-context";
 import { useData } from "../Contexts/data-context";
 import { Toast } from "./Toast";

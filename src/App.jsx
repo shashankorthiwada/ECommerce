@@ -9,6 +9,9 @@ import {
   Home,
   WishList,
   ProductDetails,
+  PrivateRoute,
+  SignUp,
+  Login
 } from "./index";
 
 function App() {
@@ -42,8 +45,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductListing />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<WishList />} />
+        <PrivateRoute path="/cart" element={<Cart />} />
+        <PrivateRoute path="/wishlist" element={<WishList />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
 
       {/* {route === "products" && <ProductListing />}

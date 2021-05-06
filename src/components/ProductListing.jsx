@@ -1,4 +1,4 @@
-import { items } from "../components/products-reducer.js";
+import { items } from "../reducers/products-reducer.js";
 import { Filters } from "./Filters";
 import { useData } from "../Contexts/data-context";
 import { Products } from "./Products";
