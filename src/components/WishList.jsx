@@ -28,20 +28,11 @@ export const WishList = () => {
                   alt="item"
                 />
                 <button
+                  className="cursor btn-color remove-btn"
                   style={{ display: "inline-block" }}
                   onClick={() =>
                     dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item })
                   }
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    cursor: "pointer",
-                    right: 0,
-                    backgroundColor: "transparent",
-                    color: "#fff",
-                    borderRadius: ".25rem",
-                    border: "1px solid white",
-                  }}
                 >
                   X
                 </button>
@@ -60,20 +51,11 @@ export const WishList = () => {
                 }}
               >
                 <button
+                  className="add-btn"
                   style={{ display: "inline-block" }}
                   onClick={() =>
                     dispatch({ type: "ADD_TO_CART", payload: item })
                   }
-                  style={{
-                    width: "10rem",
-                    marginLeft: "1rem",
-                    color: "#fff",
-                    borderRadius: "0.25rem",
-                    backgroundColor: "#5A4041",
-                    border: "1px solid #fff",
-                    height: "2rem",
-                    cursor: "pointer",
-                  }}
                 >
                   Move To Cart
                 </button>

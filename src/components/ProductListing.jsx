@@ -34,19 +34,22 @@ export const ProductListing = () => {
   const sortedData = getSortedData(products, sortBy);
   const filteredData = getFilteredData(sortedData, inStock, fastDelivery);
 
-  useEffect(async () => {
-    try {
-      showLoader(true);
-      const {
-        data: { products },
-      } = await axios.get(
-        "https://halwaai-ecommerce-backend.herokuapp.com/products"
-      );
-      dispatch({ type: "SHOW_PRODUCTS", payload: products });
-      showLoader(false);
-    } catch (error) {
-      console.error("error fetching products in Product Listing");
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        showLoader(true);
+        const {
+          data: { products },
+        } = await axios.get(
+          "https://halwaai-ecommerce-backend.herokuapp.com/products"
+        );
+        dispatch({ type: "SHOW_PRODUCTS", payload: products });
+        showLoader(false);
+      } catch (error) {
+        console.error("error fetching products in Product Listing");
+      }
     }
+    fetchData();
   }, [dispatch]);
 
   return loader ? (

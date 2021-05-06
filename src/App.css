@@ -6,6 +6,33 @@
   margin-top: 0.4rem;
 }
 
+.cursor {
+  cursor: pointer;
+}
+
+.btn-color {
+  color: "#fff";
+}
+
+.remove-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  border: 1px solid white;
+}
+
+.add-btn {
+  width: 10rem;
+  margin-left: 2rem;
+  border-radius: 0.25rem;
+  background-color: #5a4041;
+  border: 1px solid #fff;
+  height: 2rem;
+  margin: 1rem;
+}
+
 .category-container:hover .category-image {
   opacity: 0.3;
 }

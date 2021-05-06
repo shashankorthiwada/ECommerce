@@ -14,15 +14,17 @@ export const ProductDetails = () => {
     dispatch,
   } = useData();
 
-  useEffect(async () => {
-    const {
-      data: { product },
-    } = await axios.get(
-      `https://halwaai-ecommerce-backend.herokuapp.com/products/${productId}`
-    );
-
-    setProductDetails(product);
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      const {
+        data: { product },
+      } = await axios.get(
+        `https://halwaai-ecommerce-backend.herokuapp.com/products/${productId}`
+      );
+      setProductDetails(product);
+    }
+    fetchData();
+  }, [productId]);
 
   const product = productDetails;
 
