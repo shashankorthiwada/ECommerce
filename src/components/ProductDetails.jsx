@@ -1,5 +1,4 @@
 import { useParams } from "react-router";
-import { useTheme } from "../Contexts/theme-context";
 import { useData } from "../Contexts/data-context";
 import { Toast } from "./Toast";
 import { useEffect, useState } from "react";
@@ -9,7 +8,7 @@ export const ProductDetails = () => {
   const { productId } = useParams();
   const [productDetails, setProductDetails] = useState({});
   console.log(productId);
-  const { theme } = useTheme();
+
   const {
     state: { toastMessage, products },
     dispatch,
@@ -18,7 +17,9 @@ export const ProductDetails = () => {
   useEffect(async () => {
     const {
       data: { product },
-    } = await axios.get(`https://halwaai-ecommerce-backend.herokuapp.com/products/${productId}`);
+    } = await axios.get(
+      `https://halwaai-ecommerce-backend.herokuapp.com/products/${productId}`
+    );
 
     setProductDetails(product);
   }, []);
@@ -33,7 +34,7 @@ export const ProductDetails = () => {
       <div
         className="product-card-div m-1rem"
         style={{
-          border: `1px solid ${theme.color}`,
+          border: "1px solid black",
           height: "30rem",
           width: "30rem",
           cursor: "pointer",

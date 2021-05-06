@@ -1,13 +1,11 @@
 import { useData } from "../Contexts/data-context";
-import { useTheme } from "../Contexts/theme-context";
 
 export const Cart = () => {
   const {
     state: { itemsInCart },
     dispatch,
   } = useData();
-  const { theme } = useTheme();
-
+  
   const cartTotal = itemsInCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -28,7 +26,7 @@ export const Cart = () => {
             <div
               className="product-card-div m-1rem"
               style={{
-                border: `1px solid ${theme.color}`,
+                border: "1px solid black",
                 height: "30rem",
                 width: "17rem",
               }}

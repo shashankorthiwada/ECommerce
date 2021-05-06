@@ -1,9 +1,7 @@
-import { useTheme } from "../Contexts/theme-context";
 import { useData } from "../Contexts/data-context";
 import { Link } from "react-router-dom";
 
 export const Products = ({ product }) => {
-  const { theme } = useTheme();
   const { dispatch } = useData();
 
   const { name, image, _id, price } = product;
@@ -12,7 +10,7 @@ export const Products = ({ product }) => {
     <div
       className="product-card-div m-1rem"
       style={{
-        border: `1px solid ${theme.color}`,
+        border: "1px solid black",
         height: "32rem",
         width: "17rem",
         cursor: "pointer",

@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { CartProvider } from "./Contexts/cart-context";
-import { ThemeProvider } from "./Contexts/theme-context";
 import { DataProvider } from "./Contexts/data-context";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./Contexts/auth-context";
@@ -21,13 +20,11 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <ThemeProvider>
-          <DataProvider>
-            <CartProvider>
-              <App />
-            </CartProvider>
-          </DataProvider>
-        </ThemeProvider>
+        <DataProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </DataProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>,

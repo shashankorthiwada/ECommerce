@@ -1,12 +1,10 @@
 import { useData } from "../Contexts/data-context";
-import { useTheme } from "../Contexts/theme-context";
 
 export const WishList = () => {
   const {
     state: { itemsInWishList },
     dispatch,
   } = useData();
-  const { theme } = useTheme();
   return (
     <>
       {itemsInWishList.length > 0 ? (
@@ -15,7 +13,7 @@ export const WishList = () => {
             <div
               className="product-card-div m-1rem"
               style={{
-                border: `1px solid ${theme.color}`,
+                border: "1px solid black",
                 height: "28rem",
               }}
             >

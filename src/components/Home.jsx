@@ -1,10 +1,8 @@
 import mainImage from "../images/main-image.svg";
-import { useTheme } from "../Contexts/theme-context";
 import { NavLink } from "react-router-dom";
 import "../App.css";
 
 export const Home = () => {
-  const { theme } = useTheme();
   return (
     <>
       <div style={{ position: "relative", height: "83.2vh" }}>

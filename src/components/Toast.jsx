@@ -1,5 +1,4 @@
 import { useData } from "../Contexts/data-context";
-import { useTheme } from "../Contexts/theme-context";
 
 import { useEffect } from "react";
 
@@ -8,8 +7,6 @@ export const Toast = () => {
     state: { toastMessage },
     dispatch,
   } = useData();
-
-  const { theme } = useTheme();
 
   const closeToastHandler = () => {
     dispatch({ type: "CLOSE_TOAST", payload: null });
@@ -23,7 +20,7 @@ export const Toast = () => {
   return (
     <div
       style={{
-        border: `1px solid ${theme.color}`,
+        border: "1px solid black",
         margin: "1rem",
         borderRadius: "0.3rem",
         width: "15rem",
