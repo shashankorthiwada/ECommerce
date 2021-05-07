@@ -44,7 +44,7 @@ export const Cart = () => {
                   alt="item"
                 />
                 <button
-                  className="cursor btn-color remove-btn"
+                  className="cursor  remove-btn"
                   style={{ display: "inline-block" }}
                   onClick={() =>
                     dispatch({ type: "REMOVE_FROM_CART", payload: item })

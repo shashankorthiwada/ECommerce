@@ -41,14 +41,14 @@ export const productReducer = (state, action) => {
       });
     case "ADD_TO_CART":
       if (
-        state.itemsInCart.find((cartItem) => cartItem.id === action.payload.id)
+        state.itemsInCart.find((cartItem) => cartItem._id === action.payload._id)
       ) {
         return {
           ...state,
           visibleCartItems: "visible",
           toastMessage: `${action.payload.name} Added To Cart Succesfully`,
           itemsInCart: state.itemsInCart.map((cartItem) =>
-            cartItem.id === action.payload.id
+            cartItem._id === action.payload._id
               ? { ...cartItem, quantity: cartItem.quantity + 1 }
               : cartItem
           ),
