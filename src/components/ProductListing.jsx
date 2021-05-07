@@ -69,7 +69,7 @@ export const ProductListing = () => {
       <div className="content" style={{ display: "flex", flexWrap: "wrap" }}>
         {toastMessage && <Toast />}
         {filteredData.map((product) => (
-          <div key={product.id}>
+          <div key={product._id}>
             <Products product={product} />
           </div>
         ))}

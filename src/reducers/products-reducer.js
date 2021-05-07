@@ -41,7 +41,9 @@ export const productReducer = (state, action) => {
       });
     case "ADD_TO_CART":
       if (
-        state.itemsInCart.find((cartItem) => cartItem._id === action.payload._id)
+        state.itemsInCart.find(
+          (cartItem) => cartItem._id === action.payload._id
+        )
       ) {
         return {
           ...state,
@@ -69,7 +71,7 @@ export const productReducer = (state, action) => {
       return {
         ...state,
         itemsInCart: state.itemsInCart.map((cartItem) =>
-          cartItem.id === action.payload.id
+          cartItem._id === action.payload._id
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
         ),
@@ -79,7 +81,7 @@ export const productReducer = (state, action) => {
       return {
         ...state,
         itemsInCart: state.itemsInCart.filter(
-          (cartItem) => cartItem.id !== action.payload.id
+          (cartItem) => cartItem._id !== action.payload._id
         ),
       };
     case "ADD_TO_WISH_LIST":
@@ -92,7 +94,7 @@ export const productReducer = (state, action) => {
       return {
         ...state,
         itemsInWishList: state.itemsInWishList.filter(
-          (item) => item.id !== action.payload.id
+          (item) => item._id !== action.payload._id
         ),
       };
     case "CLOSE_TOAST":

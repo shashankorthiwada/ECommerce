@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { CartProvider } from "./Contexts/cart-context";
 import { DataProvider } from "./Contexts/data-context";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./Contexts/auth-context";
@@ -21,9 +20,7 @@ ReactDOM.render(
     <Router>
       <AuthProvider>
         <DataProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
+          <App />
         </DataProvider>
       </AuthProvider>
     </Router>
