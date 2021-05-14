@@ -3,8 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { DataProvider } from "./Contexts/data-context";
+import { CartProvider } from "./Contexts/cart-context";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./Contexts/auth-context";
+import { WishListProvider } from "./Contexts/wishlist-context";
 export { Home } from "./components/Home";
 export { WishList } from "./components/WishList";
 export { Navigation } from "./components/Navigation";
@@ -20,7 +22,11 @@ ReactDOM.render(
     <Router>
       <AuthProvider>
         <DataProvider>
-          <App />
+          <CartProvider>
+            <WishListProvider>
+              <App />
+            </WishListProvider>
+          </CartProvider>
         </DataProvider>
       </AuthProvider>
     </Router>

@@ -1,12 +1,11 @@
-import { useData } from "../Contexts/data-context";
-
 import { useEffect } from "react";
+import { useCart } from "../Contexts/cart-context";
 
-export const Toast = () => {
+export const CartToast = () => {
   const {
-    state: { toastMessage },
+    state: { cartToastMessage },
     dispatch,
-  } = useData();
+  } = useCart();
 
   const closeToastHandler = () => {
     dispatch({ type: "CLOSE_TOAST", payload: null });
@@ -32,7 +31,7 @@ export const Toast = () => {
         marginLeft: "43rem",
       }}
     >
-      <h5>{toastMessage}</h5>
+      <h5>{cartToastMessage}</h5>
       <button
         style={{
           position: "absolute",

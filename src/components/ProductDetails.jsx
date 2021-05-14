@@ -1,8 +1,10 @@
 import { useParams } from "react-router";
-import { useData } from "../Contexts/data-context";
-import { Toast } from "./Toast";
+import { CartToast } from "./CartToast";
+import { WishlistToast } from "./WishlistToast";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useCart } from "../Contexts/cart-context";
+import { useWishlist } from "../Contexts/wishlist-context";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
@@ -10,9 +12,14 @@ export const ProductDetails = () => {
   console.log(productId);
 
   const {
-    state: { toastMessage },
-    dispatch,
-  } = useData();
+    state: { cartToastMessage },
+    addItemsToCart,
+  } = useCart();
+
+  const {
+    state: { wishlistToastMessage },
+    addItemsToWishlist,
+  } = useWishlist();
 
   useEffect(() => {
     async function fetchData() {
@@ -32,7 +39,8 @@ export const ProductDetails = () => {
 
   return (
     <>
-      {toastMessage && <Toast />}
+      {cartToastMessage && <CartToast />}
+      {wishlistToastMessage && <WishlistToast />}
       <div
         className="product-card-div m-1rem"
         style={{
@@ -59,7 +67,7 @@ export const ProductDetails = () => {
           <p style={{}}>Rs. {price}</p>
 
           <button
-            onClick={() => dispatch({ type: "ADD_TO_CART", payload: product })}
+            onClick={() => addItemsToCart({ product })}
             style={{
               width: "9rem",
               marginLeft: "5rem",
@@ -76,9 +84,7 @@ export const ProductDetails = () => {
           </button>
 
           <button
-            onClick={() =>
-              dispatch({ type: "ADD_TO_WISH_LIST", payload: product })
-            }
+            onClick={() => addItemsToWishlist({ product })}
             style={{
               width: "9rem",
               marginLeft: "3rem",

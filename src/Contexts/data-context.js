@@ -8,16 +8,16 @@ export function DataProvider({ children }) {
     sortBy: null,
     showAllInventory: false,
     showFastDelivery: false,
-    itemsInCart: [],
-    itemsInWishList: [],
-    visibleCartItems: "hidden",
-    visibleWishListItems: "hidden",
-    toastMessage: "",
     products: [],
   });
 
   return (
-    <DataContext.Provider value={{ state, dispatch }}>
+    <DataContext.Provider
+      value={{
+        state,
+        dispatch,
+      }}
+    >
       {children}
     </DataContext.Provider>
   );

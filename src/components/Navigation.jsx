@@ -1,15 +1,14 @@
-import { useData } from "../Contexts/data-context";
 import { NavLink } from "react-router-dom";
+import { useCart } from "../Contexts/cart-context";
+import { useWishlist } from "../Contexts/wishlist-context";
 
 export const Navigation = () => {
   const {
-    state: {
-      itemsInCart,
-      visibleCartItems,
-      itemsInWishList,
-      visibleWishListItems,
-    },
-  } = useData();
+    state: { itemsInCart, visibleCartItems },
+  } = useCart();
+  const {
+    state: { itemsInWishList, visibleWishListItems },
+  } = useWishlist();
 
   const cartQuantity = itemsInCart.length;
 

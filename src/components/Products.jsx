@@ -1,8 +1,8 @@
-import { useData } from "../Contexts/data-context";
 import { Link } from "react-router-dom";
+import { useCart } from "../Contexts/cart-context";
 
 export const Products = ({ product }) => {
-  const { dispatch } = useData();
+  const { addItemsToCart } = useCart();
 
   const { name, image, _id, price } = product;
 
@@ -13,7 +13,6 @@ export const Products = ({ product }) => {
         border: "1px solid black",
         height: "32rem",
         width: "17rem",
-        cursor: "pointer",
       }}
     >
       <div className="product-image-div">
@@ -30,11 +29,12 @@ export const Products = ({ product }) => {
         <p style={{ padding: "0.3rem" }}>Rs. {price}</p>
 
         <button
-          onClick={() => dispatch({ type: "ADD_TO_CART", payload: product })}
+          onClick={() => addItemsToCart({ product })}
           style={{
             width: "9rem",
             marginLeft: "3rem",
             marginTop: "1rem",
+            marginBottom: "1rem",
             color: "#fff",
             borderRadius: "0.25rem",
             backgroundColor: "#5A4041",
@@ -46,28 +46,14 @@ export const Products = ({ product }) => {
           Add To Cart
         </button>
 
-        <button
-          onClick={() =>
-            dispatch({ type: "ADD_TO_WISH_LIST", payload: product })
-          }
-          style={{
-            width: "9rem",
-            margin: "0.2rem auto 0.7rem 3rem",
-            color: "#5A4041",
-            borderRadius: "0.25rem",
-            border: "1px solid #5A4041",
-            height: "2rem",
-            cursor: "pointer",
-          }}
-        >
-          Add To Wish List
-        </button>
-        <Link
-          to={`/product/${_id}`}
-          style={{ color: "#5A4041", padding: "3rem" }}
-        >
-          Details
-        </Link>
+        <div>
+          <Link
+            to={`/product/${_id}`}
+            style={{ color: "#5A4041", padding: "3rem" }}
+          >
+            View Details
+          </Link>
+        </div>
       </div>
     </div>
   );

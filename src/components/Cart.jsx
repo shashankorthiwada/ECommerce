@@ -1,10 +1,13 @@
-import { useData } from "../Contexts/data-context";
+import { useCart } from "../Contexts/cart-context";
 
 export const Cart = () => {
   const {
     state: { itemsInCart },
+    addItemsToCart,
+    removeItemFromCart,
+    decreaseQty,
     dispatch,
-  } = useData();
+  } = useCart();
 
   const cartTotal = itemsInCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -22,7 +25,7 @@ export const Cart = () => {
       </div>
       <div style={{ display: "flex", flexWrap: "wrap" }}>
         {itemsInCart.length > 0 ? (
-          itemsInCart.map((item) => (
+          itemsInCart.map((product) => (
             <div
               className="product-card-div m-1rem"
               style={{
@@ -40,22 +43,20 @@ export const Cart = () => {
                 <img
                   className="item-image"
                   style={{ width: "16.9rem" }}
-                  src={item.image}
+                  src={product.image}
                   alt="item"
                 />
                 <button
                   className="cursor  remove-btn"
                   style={{ display: "inline-block" }}
-                  onClick={() =>
-                    dispatch({ type: "REMOVE_FROM_CART", payload: item })
-                  }
+                  onClick={() => removeItemFromCart({ product })}
                 >
                   X
                 </button>
               </div>
               <div style={{ padding: "0.4rem", marginLeft: "2rem" }}>
-                <h4>{item.name}</h4>
-                <p style={{ padding: "0.3rem" }}>Rs. {item.price}</p>
+                <h4>{product.name}</h4>
+                <p style={{ padding: "0.3rem" }}>Rs. {product.price}</p>
               </div>
               <div
                 style={{
@@ -66,27 +67,15 @@ export const Cart = () => {
                   justifyContent: "space-evenly",
                 }}
               >
-                <button
-                  onClick={() =>
-                    dispatch({ type: "ADD_TO_CART", payload: item })
-                  }
-                >
-                  +
-                </button>
-                <p>{item.quantity}</p>
-                <button
-                  onClick={() =>
-                    dispatch({ type: "DECREASE_QTY", payload: item })
-                  }
-                >
-                  -
-                </button>
+                <button onClick={() => addItemsToCart({ product })}>+</button>
+                <p>{product.quantity}</p>
+                <button onClick={() => decreaseQty({ product })}>-</button>
 
                 <button
                   className="cursor btn-color add-btn"
                   style={{ display: "inline-block" }}
                   onClick={() =>
-                    dispatch({ type: "ADD_TO_WISH_LIST", payload: item })
+                    dispatch({ type: "ADD_TO_WISH_LIST", payload: product })
                   }
                 >
                   Move To WishList
