@@ -8,6 +8,7 @@ import { useWishlist } from "../Contexts/wishlist-context";
 
 export const ProductDetails = () => {
   const { productId } = useParams();
+  console.log(productId);
   const [productDetails, setProductDetails] = useState({});
   console.log(productId);
 
