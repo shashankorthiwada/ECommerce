@@ -18,14 +18,31 @@ export const Navigation = () => {
     <nav
       style={{
         backgroundColor: "#5A4041",
-        height: "3rem",
+        height: "4.5rem",
+        paddingLeft: "1.5rem",
       }}
     >
+      <NavLink to="/">
+        <div>
+          <i
+            class="fas fa-h-square fa-3x"
+            style={{
+              color: "whitesmoke",
+              float: "left",
+              paddingRight: "0.3rem",
+              marginTop:"0rem"
+            }}
+          >
+            alwaai
+          </i>
+        </div>
+      </NavLink>
       <div
         style={{
-          margin: "0rem 0.1rem auto 65rem",
+          // margin: "0rem 0.1rem auto 65rem",
+          float: "right",
           display: "flex",
-          justifyContent: "space-evenly",
+          paddingRight: "2rem",
         }}
       >
         <NavLink to="/products">
@@ -35,7 +52,8 @@ export const Navigation = () => {
               color: "#fff",
               fontSize: "0.8rem",
               fontWeight: "normal",
-              marginTop: "0.3rem",
+              marginTop: "0rem",
+              paddingRight: "1rem",
             }}
           >
             <i
@@ -59,7 +77,8 @@ export const Navigation = () => {
               color: "#fff",
               fontSize: "0.8rem",
               fontWeight: "normal",
-              marginTop: "0.3rem",
+              marginTop: "0rem",
+              paddingRight: "1rem",
             }}
           >
             <i
@@ -98,7 +117,7 @@ export const Navigation = () => {
               color: "#fff",
               fontSize: "0.8rem",
               fontWeight: "normal",
-              marginTop: "0.3rem",
+              marginTop: "0rem",
             }}
           >
             <i

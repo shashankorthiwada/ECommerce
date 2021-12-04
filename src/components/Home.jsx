@@ -22,8 +22,8 @@ export const Home = () => {
             className="button primary-button"
             style={{
               position: "absolute",
-              top: "27rem",
-              right: "35rem",
+              top: "88%",
+              left:"45%",
               border: "none",
               cursor: "pointer",
               backgroundColor: "#5A4041",

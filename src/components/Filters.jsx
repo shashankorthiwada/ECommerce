@@ -33,7 +33,7 @@ export const Filters = () => {
                   }
                   checked={sortBy && sortBy === "HIGH_TO_LOW"}
                 />{" "}
-                Show High To High
+                Show High To Low
               </li>
             </fieldset>
 
