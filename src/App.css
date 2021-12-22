@@ -1,0 +1,68 @@
+@import url(https://coherentui.netlify.app/styles.css);
+@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
+
+.darkmode-btn {
+  /* position: absolute; */
+  margin-top: 0.4rem;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.btn-color {
+  color: #fff;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border-radius: 0.25rem;
+  border: 1px solid white;
+}
+
+.add-btn {
+  width: 10rem;
+  margin-left: 2rem;
+  border-radius: 0.25rem;
+  background-color: #5a4041;
+  border: 1px solid #fff;
+  height: 2rem;
+  margin: 1rem;
+}
+
+.category-container:hover .category-image {
+  opacity: 0.3;
+}
+
+.category-container:hover .category-text-container {
+  opacity: 1;
+}
+
+.category-container {
+  position: relative;
+  cursor: pointer;
+}
+
+.category-text-container {
+  transition: ".5s ease";
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  text-align: center;
+}
+
+.category-image {
+  opacity: 1;
+  transition: ".5s ease";
+  backface-visibility: hidden;
+  width: 15rem;
+  height: 15rem;
+  display: block;
+  margin: 1rem;
+  border-radius: 0.25rem;
+}
