@@ -16,6 +16,7 @@ export { ProductDetails } from "./components/ProductDetails";
 export { PrivateRoute } from "./components/PrivateRoute";
 export { Login } from "./components/Login";
 export { SignUp } from "./components/SignUp";
+export { UserDashBoard } from "./components/UserDashBoard";
 
 ReactDOM.render(
   <React.StrictMode>

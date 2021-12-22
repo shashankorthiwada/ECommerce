@@ -1,6 +1,13 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import {
+  createContext,
+  useContext,
+  // useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { userDetailsReducer } from "../reducers/auth-reducer";
 import axios from "axios";
+// import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -12,7 +19,11 @@ export const initialUserState = {
 };
 
 export function AuthProvider({ children }) {
-  const [login, setLogin] = useState(localStorage.getItem("login") || false);
+  const { isUserLoggedIn, token } = JSON.parse(
+    localStorage?.getItem("login")
+  ) || { isUserLoggedIn: false, token: null };
+
+  const [login, setLogin] = useState(isUserLoggedIn);
   const [userDetails, userDetailsDispatch] = useReducer(
     userDetailsReducer,
     initialUserState
@@ -22,58 +33,103 @@ export function AuthProvider({ children }) {
   );
   const [loader, showLoader] = useState(false);
 
-  const loginUser = async (username, password) => {
+  const setUpAuthHeaderForServiceCalls = (token) => {
+    if (token) {
+      return (axios.defaults.headers.common["Authorization"] = token);
+    }
+    delete axios.defaults.headers.common["Authorization"];
+  };
+
+  token && setUpAuthHeaderForServiceCalls(token);
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   setupAuthExceptionHandler();
+  // }, [token]);
+
+  // function setupAuthExceptionHandler() {
+  //   console.log("ostundi");
+  //   const UNAUTHORIZED = 401;
+  //   axios.interceptors.response.use(
+  //     (response) => response,
+  //     (error) => {
+  //       if (error?.response?.status === UNAUTHORIZED) {
+  //         logOutUser();
+  //         navigate("login");
+  //       }
+  //       return Promise.reject(error);
+  //     }
+  //   );
+  // }
+
+  const loginUserWithCredentials = async (username, password) => {
     try {
-      const { data } = await axios.post("https://halwaai-ecommerce-backend.herokuapp.com/users/login", {
-        username: username.toLowerCase(),
-        password: password,
-      });
-      // if (user) {
-      setLogin(true);
-      localStorage.setItem("login", login);
-      setUser(data.user);
-      localStorage.setItem("userData", JSON.stringify(data.user));
+      const { data } = await axios.post(
+        "https://halwaai-ecommerce-backend.herokuapp.com/users/login",
+        {
+          username: username.toLowerCase(),
+          password: password,
+        }
+      );
+      if (data) {
+        loginUser(data);
+      }
+
       return data;
-      // }
     } catch (error) {
       const errorResponse = JSON.stringify(error.response.data);
       console.error(errorResponse);
       return error.response.data;
     }
+  };
+
+  const signUpNewUser = async (username, password, email, phonenumber) => {
+    try {
+      const { data } = await axios.post(
+        "https://halwaai-ecommerce-backend.herokuapp.com/users/signup",
+        {
+          username: username.toLowerCase(),
+          password,
+          email: email.toLowerCase(),
+          phonenumber,
+        }
+      );
+      // console.log("data from signup: ", data);
+      if (data) {
+        loginUser(data);
+      }
+      return data;
+    } catch (error) {
+      const errorResponse = JSON.stringify(error);
+      console.error(errorResponse);
+      return error;
+    }
+  };
+
+  const loginUser = ({ token, user }) => {
+    setLogin(true);
+    localStorage?.setItem(
+      "login",
+      JSON.stringify({ isUserLoggedIn: true, token })
+    );
+    setUpAuthHeaderForServiceCalls(token);
+    setUser(user);
+    localStorage.setItem("userData", JSON.stringify(user));
   };
 
   const logOutUser = () => {
     setLogin(false);
     setUser("");
+    setUpAuthHeaderForServiceCalls(null);
     localStorage.removeItem("login");
     localStorage.removeItem("userData");
-  };
-
-  const signUpNewUser = async (username, password, email, phonenumber) => {
-    try {
-      const { data } = await axios.post("https://halwaai-ecommerce-backend.herokuapp.com/users/signup", {
-        username: username.toLowerCase(),
-        password,
-        email: email.toLowerCase(),
-        phonenumber,
-      });
-      setLogin(true);
-      localStorage.setItem("login", login);
-      setUser(data.user);
-      localStorage.setItem("userData", JSON.stringify(data.user));
-      return data;
-    } catch (error) {
-      const errorResponse = JSON.stringify(error.response.data);
-      console.error(errorResponse);
-      return error.response.data;
-    }
   };
 
   return (
     <AuthContext.Provider
       value={{
         login,
-        loginUser,
+        loginUserWithCredentials,
         logOutUser,
         signUpNewUser,
         userDetails,

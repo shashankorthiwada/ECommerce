@@ -25,7 +25,7 @@ export const Navigation = () => {
       <NavLink to="/">
         <div>
           <i
-            class="fas fa-h-square fa-3x"
+            className="fas fa-h-square fa-3x"
             style={{
               color: "whitesmoke",
               float: "left",

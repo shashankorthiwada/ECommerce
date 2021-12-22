@@ -10,6 +10,7 @@ import {
   PrivateRoute,
   SignUp,
   Login,
+  UserDashBoard,
 } from "./index";
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <PrivateRoute path="/wishlist" element={<WishList />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<UserDashBoard />} />
       </Routes>
     </div>
   );

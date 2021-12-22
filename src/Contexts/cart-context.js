@@ -15,12 +15,15 @@ export function CartProvider({ children }) {
   const { userData } = useAuthContext();
 
   useEffect(() => {
-    if (userData) {
+    if (userData && userData._id) {
+      // console.log("userData from cart context: ", userData);
       (async () => {
         const {
           data: { data: cartItems },
-        } = await axios.get(`https://halwaai-ecommerce-backend.herokuapp.com/cart/${userData._id}`);
-        console.log(cartItems);
+        } = await axios.get(
+          `https://halwaai-ecommerce-backend.herokuapp.com/cart/${userData._id}`
+        );
+        // console.log(cartItems);
         dispatch({
           type: "SHOW_CART_ITEMS",
           payload: cartItems,

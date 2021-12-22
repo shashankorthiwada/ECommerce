@@ -33,6 +33,7 @@ export const Cart = () => {
                 height: "30rem",
                 width: "17rem",
               }}
+              key={product._id}
             >
               <div
                 className="product-image-div"

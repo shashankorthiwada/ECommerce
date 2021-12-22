@@ -44,7 +44,7 @@ export const SignUp = () => {
             onSubmit={signUpHandler}
           >
             <div className="input-div m-1rem">
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
               <input
                 className="input"
                 style={{ marginLeft: "1rem" }}
@@ -60,7 +60,7 @@ export const SignUp = () => {
               />
             </div>
             <div className="input-div m-1rem">
-              <i class="fas fa-envelope"></i>
+              <i className="fas fa-envelope"></i>
               <input
                 className="input"
                 style={{ marginLeft: "1rem" }}
@@ -76,7 +76,7 @@ export const SignUp = () => {
               />
             </div>
             <div className="input-div m-1rem">
-              <i class="fas fa-mobile"></i>
+              <i className="fas fa-mobile"></i>
               <input
                 className="input"
                 style={{ marginLeft: "1rem" }}
@@ -92,7 +92,7 @@ export const SignUp = () => {
               />
             </div>
             <div className="input-div m-1rem">
-              <i class="fas fa-lock"></i>
+              <i className="fas fa-lock"></i>
               <input
                 className="input"
                 style={{ marginLeft: "1rem" }}

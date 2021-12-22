@@ -15,13 +15,17 @@ export const WishListProvider = ({ children }) => {
   const { userData } = useAuthContext();
 
   useEffect(() => {
-    (async () => {
-      const {
-        data: { data: wishlistItems },
-      } = await axios.get(`https://halwaai-ecommerce-backend.herokuapp.com/wishlist/${userData._id}`);
-      console.log(wishlistItems);
-      dispatch({ type: "SHOW_WISHLIST_ITEMS", payload: wishlistItems });
-    })();
+    if (userData && userData._id) {
+      (async () => {
+        const {
+          data: { data: wishlistItems },
+        } = await axios.get(
+          `https://halwaai-ecommerce-backend.herokuapp.com/wishlist/${userData._id}`
+        );
+        // console.log(wishlistItems);
+        dispatch({ type: "SHOW_WISHLIST_ITEMS", payload: wishlistItems });
+      })();
+    }
   }, [userData]);
 
   const addItemsToWishlist = async ({ product }) => {

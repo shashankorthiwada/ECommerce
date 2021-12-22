@@ -6,7 +6,7 @@ import Loader from "react-loader-spinner";
 export const Login = () => {
   const [ErrorMsg, setErrorMsg] = useState("");
   const {
-    loginUser,
+    loginUserWithCredentials,
     userDetailsDispatch,
     userDetails: { username, password },
     loader,
@@ -18,7 +18,7 @@ export const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     showLoader(true);
-    const res = await loginUser(username, password, state);
+    const res = await loginUserWithCredentials(username, password, state);
     showLoader(false);
     if (!res.success) {
       setErrorMsg(res.message);
@@ -39,7 +39,7 @@ export const Login = () => {
       <h2 style={{ marginLeft: "4rem" }}>Login to continue!</h2>
       <form className="content-div width-fit m-1rem" onSubmit={loginHandler}>
         <div className="input-div m-1rem">
-          <i class="fas fa-user"></i>
+          <i className="fas fa-user"></i>
           <input
             className="input"
             style={{ marginLeft: "1rem" }}
@@ -55,7 +55,7 @@ export const Login = () => {
           />
         </div>
         <div className="input-div" style={{ marginLeft: "1rem" }}>
-          <i class="fas fa-lock"></i>
+          <i className="fas fa-lock"></i>
           <input
             className="input"
             style={{ marginLeft: "1rem", marginBottom: "1rem" }}
