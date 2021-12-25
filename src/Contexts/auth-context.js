@@ -1,13 +1,12 @@
 import {
   createContext,
   useContext,
-  // useEffect,
+  useEffect,
   useReducer,
   useState,
 } from "react";
 import { userDetailsReducer } from "../reducers/auth-reducer";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
@@ -41,26 +40,36 @@ export function AuthProvider({ children }) {
   };
 
   token && setUpAuthHeaderForServiceCalls(token);
-  // const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   setupAuthExceptionHandler();
-  // }, [token]);
+  useEffect(() => {
+    if (userData && userData._id) {
+      (async () => {
+        const {
+          data: {
+            user: { username, email, phonenumber },
+          },
+        } = await axios.get(
+          `https://halwaai-ecommerce-backend.herokuapp.com/users/${userData._id}`
+        );
+        updateUserDetails(username, email, phonenumber);
+      })();
+    }
+  }, [userData]);
 
-  // function setupAuthExceptionHandler() {
-  //   console.log("ostundi");
-  //   const UNAUTHORIZED = 401;
-  //   axios.interceptors.response.use(
-  //     (response) => response,
-  //     (error) => {
-  //       if (error?.response?.status === UNAUTHORIZED) {
-  //         logOutUser();
-  //         navigate("login");
-  //       }
-  //       return Promise.reject(error);
-  //     }
-  //   );
-  // }
+  const updateUserDetails = (username, email, phonenumber) => {
+    userDetailsDispatch({
+      type: "SET_USERNAME",
+      payload: username,
+    });
+    userDetailsDispatch({
+      type: "SET_EMAIL",
+      payload: email,
+    });
+    userDetailsDispatch({
+      type: "SET_PHONE",
+      payload: phonenumber,
+    });
+  };
 
   const loginUserWithCredentials = async (username, password) => {
     try {

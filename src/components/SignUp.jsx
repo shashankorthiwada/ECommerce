@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useAuthContext } from "../Contexts/auth-context";
 import { NavLink } from "react-router-dom";
 import Loader from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   const [ErrorMsg, setErrorMsg] = useState("");
-  const [showMsg, setShowMsg] = useState(false);
+  const [showMsg, setShowMsg] = useState(true);
   const {
     userDetailsDispatch,
     userDetails: { username, password, email, phonenumber },
@@ -14,6 +15,7 @@ export const SignUp = () => {
     signUpNewUser,
     userData,
   } = useAuthContext();
+  const navigate = useNavigate();
 
   const signUpHandler = async (e) => {
     showLoader(true);
@@ -155,10 +157,22 @@ export const SignUp = () => {
         </div>
       )}
       {showMsg && (
-        <div className="card-description">
-          <p>
-            Hi <b>{userData.username}</b>, thank you for signing up
+        <div style={{ padding: "1rem" }}>
+          <p style={{ padding: "1rem" }}>
+            Hi <b>{userData.name}</b>, thank you for signing up
           </p>
+          <button
+            className="button primary-button"
+            style={{
+              border: "none",
+              cursor: "pointer",
+              backgroundColor: "#5A4041",
+              marginLeft: "20%",
+            }}
+            onClick={() => navigate("/products")}
+          >
+            Show Products
+          </button>
         </div>
       )}
     </div>
