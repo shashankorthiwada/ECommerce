@@ -30,7 +30,7 @@ export const Navigation = () => {
               color: "whitesmoke",
               float: "left",
               paddingRight: "0.3rem",
-              marginTop:"0rem"
+              marginTop: "0rem",
             }}
           >
             alwaai
@@ -146,6 +146,29 @@ export const Navigation = () => {
               </span>
             </i>
             Bag
+          </span>
+        </NavLink>
+        <NavLink to="/dashboard">
+          <span
+            style={{
+              display: "block",
+              color: "#fff",
+              fontSize: "0.8rem",
+              fontWeight: "normal",
+              marginTop: "0.1rem",
+            }}
+          >
+            <i
+              className="fas fa-user fa-lg"
+              style={{
+                display: "block",
+                color: "whitesmoke",
+                cursor: "pointer",
+                marginLeft: "1rem",
+                padding: "0.2rem 0.2rem 0.3rem 0.2rem",
+              }}
+            ></i>
+            <p style={{ marginLeft: "0.7rem" }}>Profile</p>
           </span>
         </NavLink>
       </div>
