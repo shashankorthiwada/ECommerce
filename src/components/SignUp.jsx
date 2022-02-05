@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   const [ErrorMsg, setErrorMsg] = useState("");
-  const [showMsg, setShowMsg] = useState(true);
+  const [showMsg, setShowMsg] = useState(false);
   const {
     userDetailsDispatch,
     userDetails: { username, password, email, phonenumber },
