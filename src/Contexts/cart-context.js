@@ -13,7 +13,6 @@ export function CartProvider({ children }) {
   });
 
   const { userData } = useAuthContext();
-
   useEffect(() => {
     if (userData && userData._id) {
       // console.log("userData from cart context: ", userData);
@@ -21,7 +20,7 @@ export function CartProvider({ children }) {
         const {
           data: { data: cartItems },
         } = await axios.get(
-          `https://halwaai-ecommerce-backend.herokuapp.com/cart/${userData._id}`
+          `https://halwaai-backend.onrender.com/cart/${userData._id}`
         );
         // console.log(cartItems);
         dispatch({
@@ -35,7 +34,7 @@ export function CartProvider({ children }) {
   const addItemsToCart = async ({ product }) => {
     if (userData) {
       const { data } = await axios.post(
-        `https://halwaai-ecommerce-backend.herokuapp.com/cart/${userData._id}`,
+        `https://halwaai-backend.onrender.com/cart/${userData._id}`,
         {
           ...product,
           action: "ADD",
@@ -50,7 +49,7 @@ export function CartProvider({ children }) {
   const removeItemFromCart = async ({ product }) => {
     if (userData) {
       const { status } = await axios.delete(
-        `https://halwaai-ecommerce-backend.herokuapp.com/cart/${userData._id}`,
+        `https://halwaai-backend.onrender.com/cart/${userData._id}`,
         {
           data: {
             ...product,
@@ -66,7 +65,7 @@ export function CartProvider({ children }) {
   const decreaseQty = async ({ product }) => {
     if (userData) {
       const { data } = await axios.post(
-        `https://halwaai-ecommerce-backend.herokuapp.com/cart/${userData._id}`,
+        `https://halwaai-backend.onrender.com/cart/${userData._id}`,
         {
           ...product,
           action: "REMOVE",

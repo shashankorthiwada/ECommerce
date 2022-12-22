@@ -27,7 +27,7 @@ export const ProductDetails = () => {
       const {
         data: { product },
       } = await axios.get(
-        `https://halwaai-ecommerce-backend.herokuapp.com/products/${productId}`
+        `https://halwaai-backend.onrender.com/products/${productId}`
       );
       setProductDetails(product);
     }

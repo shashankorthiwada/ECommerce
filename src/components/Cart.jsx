@@ -1,3 +1,4 @@
+import { useAuthContext } from "../Contexts/auth-context";
 import { useCart } from "../Contexts/cart-context";
 
 export const Cart = () => {
@@ -9,10 +10,14 @@ export const Cart = () => {
     dispatch,
   } = useCart();
 
+  const {userDetails} = useAuthContext();
+
   const cartTotal = itemsInCart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  console.log("userDetails: ", userDetails);
 
   return (
     <div>

@@ -49,7 +49,7 @@ export function AuthProvider({ children }) {
             user: { username, email, phonenumber },
           },
         } = await axios.get(
-          `https://halwaai-ecommerce-backend.herokuapp.com/users/${userData._id}`
+          `https://halwaai-backend.onrender.com/users/${userData._id}`
         );
         updateUserDetails(username, email, phonenumber);
       })();
@@ -74,7 +74,7 @@ export function AuthProvider({ children }) {
   const loginUserWithCredentials = async (username, password) => {
     try {
       const { data } = await axios.post(
-        "https://halwaai-ecommerce-backend.herokuapp.com/users/login",
+        "https://halwaai-backend.onrender.com/users/login",
         {
           username: username.toLowerCase(),
           password: password,
@@ -95,7 +95,7 @@ export function AuthProvider({ children }) {
   const signUpNewUser = async (username, password, email, phonenumber) => {
     try {
       const { data } = await axios.post(
-        "https://halwaai-ecommerce-backend.herokuapp.com/users/signup",
+        "https://halwaai-backend.onrender.com/users/signup",
         {
           username: username.toLowerCase(),
           password,
