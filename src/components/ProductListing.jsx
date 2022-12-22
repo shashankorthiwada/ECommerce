@@ -50,7 +50,7 @@ export const ProductListing = () => {
         const {
           data: { products },
         } = await axios.get(
-          "https://halwaai-ecommerce-backend.herokuapp.com/products"
+          "https://halwaai-backend.onrender.com/products"
         );
         dispatch({ type: "SHOW_PRODUCTS", payload: products });
         showLoader(false);

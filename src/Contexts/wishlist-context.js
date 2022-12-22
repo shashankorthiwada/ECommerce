@@ -20,7 +20,7 @@ export const WishListProvider = ({ children }) => {
         const {
           data: { data: wishlistItems },
         } = await axios.get(
-          `https://halwaai-ecommerce-backend.herokuapp.com/wishlist/${userData._id}`
+          `https://halwaai-backend.onrender.com/wishlist/${userData._id}`
         );
         // console.log(wishlistItems);
         dispatch({ type: "SHOW_WISHLIST_ITEMS", payload: wishlistItems });
@@ -30,7 +30,7 @@ export const WishListProvider = ({ children }) => {
 
   const addItemsToWishlist = async ({ product }) => {
     const { data } = await axios.post(
-      `https://halwaai-ecommerce-backend.herokuapp.com/wishlist/${userData._id}`,
+      `https://halwaai-backend.onrender.com/wishlist/${userData._id}`,
       {
         ...product,
       }
@@ -44,7 +44,7 @@ export const WishListProvider = ({ children }) => {
   const removeItemsFromWishlist = async ({ product }) => {
     if (userData) {
       const { status } = await axios.delete(
-        `https://halwaai-ecommerce-backend.herokuapp.com/wishlist/${userData._id}`,
+        `https://halwaai-backend.onrender.com/wishlist/${userData._id}`,
         {
           data: {
             ...product,
